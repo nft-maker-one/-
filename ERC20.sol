@@ -19,12 +19,15 @@ interface IERC20 {
     * @param from：转账地址
     * @param to:收款地址
     * @param amount：转账金额
+    */
     function transferFrom(address from, address to,uint256 amount) external returns(bool);
 }
 
 
 
 contract ERC20 is IERC20 {
+    /*solidity中的public变量将自动创建一个gettar函数，重写了接口中的类。
+    即创建了一个函数balanceOf()，返回值为其余额*/
     mapping(address=>uint256) public override balanceOf;
     mapping(address=>mapping(address=>uint256)) public override allowance;
     address public owner;
@@ -32,7 +35,7 @@ contract ERC20 is IERC20 {
     uint256 public totalAmount;
     string public name;
     string public symbol;
-
+    //只在合约创建的时候执行一次
     constructor(string memory _name, string memory _symbol, uint256 _totalAmount){
         owner = msg.sender;
         name = _name;
