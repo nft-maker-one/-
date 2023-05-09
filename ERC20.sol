@@ -43,17 +43,21 @@ contract ERC20 is IERC20 {
         totalAmount = _totalAmount;
         
     }
+    //修饰器，限制合约调用对象必须为owner，否则报错
     modifier onlyOwner(){
         require(msg.sender==owner);
         _;
     }
 
+    /**
+    * @dev 铸造函数 给合约的发布者转账totalAmount数量代币
+    */
     function mint() external onlyOwner {
-        require(msg.sender==owner,"you do not have the permission");
-        require(!minted,"you can not ge jiucai");
+        require(msg.sender==owner,"you do not have the permission");//必须合约创建者才可以铸造
+        require(!minted,"you can not ge jiucai");//限定只可以铸造一次，即使合约发布者也无权更改
         balanceOf[msg.sender] += totalAmount;
         minted=true;
-        emit Transfer(address(0), msg.sender, totalAmount);
+        emit Transfer(address(0), msg.sender, totalAmount);//触发转账事件，进行记录
     }
 
     function totalSupply() external view override returns(uint256){
