@@ -2,13 +2,17 @@
 pragma solidity ^0.8.0;
 
 interface IERC20 {
-    event Transfer(address indexed from, address indexed to, uint256 value);
-    event Approval(address indexed owner, address indexed spender, uint256 value);
-    function totalSupply() external view returns (uint256);
-    function balanceOf(address account) external view returns(uint256);
-    function transfer(address to,uint256 amount) external returns(bool);
-    function allowance(address owner, address spender) external view returns(uint256);
+    event Transfer(address indexed from, address indexed to, uint256 value);//转账事件
+    event Approval(address indexed owner, address indexed spender, uint256 value);//授权事件
+    function totalSupply() external view returns (uint256);//查询代币总量函数
+    function balanceOf(address account) external view returns(uint256);//查询余额函数
+    function transfer(address to,uint256 amount) external returns(bool);//从当前地址发起转账函数
+    function allowance(address owner, address spender) external view returns(uint256);//授权额度查询函数
+    /**
+    * @dev授权函数
+    * @param spender：授权地址，大家其实可以把授权地址比作银行，加密货币总资产比作你所有的钱，你把钱授权给spender相当于把钱存入银行，spender有权对你的钱进行处置
     function approve(address spender, uint256 value) external returns(bool);
+    
     function transferFrom(address from, address to,uint256 amount) external returns(bool);
 }
 
