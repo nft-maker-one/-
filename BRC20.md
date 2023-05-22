@@ -11,7 +11,7 @@
 在将这个协议之前，我们有必要补充一个背景知识，那就是在比特币网络上每个satoshi（bitcoin的最小单位1btc = 10^8 satoshi）在挖出来的那一刻便是带有一个标识其挖出先后顺序的序号的，而通过这个序号我们便可以对satoshi进行区分。而ordinals协议的作用正如它的中文翻译--序数，是对特定序数的satoshi进行铭刻，铭刻的内容便是铭文（inscription）。铭刻的代码如下  
 OP_FALSE  
 OP_IF  
-.........铭文内容(图片，文字，代码)
+.........铭文内容(图片，文字，代码)  
 OP_ENDIF  
 这段代码的意思相当于1个if语句，但是if语句里面判断的内容是false，也就是这行代码永远不会执行，但是它与特定序号的聪产生关联，并写入比特币网络，使得这个聪具有了某些不同于其他聪的属性。让每个聪具有不同的属性，那不就是NFT吗？是的，聪明的你果然也已经想到了，所以伴随着ordinal的问世，在比特币网络上便掀起了第一波NFT的热潮。
 ![比特币网络NFT铸造数量随时间变化](https://image.blocktempo.com/2023/05/Xnip2023-05-02_14-40-42-1140x776.jpg)  
@@ -48,7 +48,7 @@ OP_ENDIF
 
 通过在特定的satoshi中内加入铭文，BRC20中的satoshi便具有了和ERC20中fungible token一样的属性了。  
 ## 最后
-截止发稿的今天，BRC20的热度真正逐渐褪去。但也是在今天，我们才能从更加客观的角度来审视整个事件。首先给肯定，BRC20的诞生是一个惊喜，将曾经在比特币网络上的不可能变成了可能。同时BRC20的这种见者有份，合约部署者也要自己mint的方式也更加展现了区块链的去中心化性，增强了大家参与的积极性。但是回到BRC20诞生的那天，@domodata便提醒过
+截止发稿的今天，BRC20的热度正在逐渐褪去。但也是在今天，我们才能从更加客观的角度来审视整个事件。首先给肯定，BRC20的诞生是一个惊喜，将曾经在比特币网络上的不可能变成了可能。同时BRC20的这种见者有份，合约部署者也要自己mint的方式也更加展现了区块链的去中心化性，增强了大家参与的积极性。但是回到BRC20诞生的那天，@domodata便提醒过
 ![image](https://github.com/nft-maker-one/-/assets/121859606/afb47f23-7abc-4abe-aad1-6175ceea6b8d)  
 就是这样一个连创始人都觉得没有意义的东西，最后居然能冲到将近10亿美金的市值。或许这背后的原因也应当引起我们的思考。最后附上一张ordinal创始人的照片，小哥看上去还挺阳光的
 ![oridinal协议作者](https://www.coindesk.com/resizer/pwQFvlwUz2WNy7NIHofAmnoVPek=/1056x792/filters:quality(80):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/coindesk/EBK3NRL4CRH43IRSIAGTMBZKVE.jpg)
