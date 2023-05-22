@@ -6,5 +6,14 @@
 ## 限制
 相比于以太坊等其他区块链平台，比特币网络的脚本语言（Script）功能比较有限，无法支持复杂的智能合约编写和执行。比特币的脚本语言只能支持一些基本的操作，如转账、锁定解锁等基本操作，
 而无法支持像以太坊那样的图灵完备的智能合约编程。其次比特币上如果要部署合约，也是无法拥有自己的状态的，因为比特币的脚步具有一次性，只对当下脚本起作用，而无法读取链上已有状态。
-## ordinal
-长期以来，在比特币上新发代币或者NFT被认为是不可能的，即便有，大多也是基于比特币二层网络来实现
+## ordinal协议
+长期以来，在比特币上新发代币或者NFT被认为是不可能的，即便有，大多也是基于比特币二层网络来实现。直到2023年1月份，BTC的核心贡献者Casey Rodarmor 推出了Ordinals协议。
+![oridinal协议作者](https://www.coindesk.com/resizer/pwQFvlwUz2WNy7NIHofAmnoVPek=/1056x792/filters:quality(80):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/coindesk/EBK3NRL4CRH43IRSIAGTMBZKVE.jpg)
+在将这个协议之前，我们有必要补充一个背景知识，那就是在比特币网络上每个satoshi（bitcoin的最小单位1btc = 10^8 satoshi）在挖出来的那一刻便是带有一个标识其挖出先后顺序的序号的，而通过这个序号我们便可以对satoshi进行区分。而ordinals协议的作用正如它的中文翻译--序数，是对特定序数的satoshi进行铭刻，铭刻的内容便是铭文（inscription）。铭刻的代码如下  
+OP_FALSE  
+OP_IF  
+.........铭文内容  
+OP_ENDIF  
+这段代码的意思相当于1个if语句，但是if语句里面判断的内容是false，也就是这行代码永远不会执行，但是它与特定序号的聪产生关联，并写入比特币网络，使得这个聪具有了某些不同于其他聪的属性。让每个聪具有不同的属性，那不就是NFT吗？是的，聪明的你果然也已经想到了，所以伴随着ordinal的问世，在比特币网络上便掀起了第一波NFT的热潮。
+![比特币网络NFT铸造数量随时间变化](https://image.blocktempo.com/2023/05/Xnip2023-05-02_14-40-42-1140x776.jpg)
+
