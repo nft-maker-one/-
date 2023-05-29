@@ -22,7 +22,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
 
     // Token name
     string private _name;
-    address public initalAddress;
+    address public onlyOwner;
 
     // Token symbol
     string private _symbol;
@@ -42,10 +42,10 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     /**
      * @dev Initializes the contract by setting a `name` and a `symbol` to the token collection.
      */
-    constructor(string memory name_, string memory symbol_, address _initalAddress) {
+    constructor(string memory name_, string memory symbol_) {
         _name = name_;
         _symbol = symbol_;
-        initalAddress = _initalAddress;
+        onlyOwner=_msgSender();
     }
 
     /**
@@ -269,6 +269,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
      * Emits a {Transfer} event.
      */
     function _mint(address to, uint256 tokenId) public virtual {
+        require(onlyOwner==_msgSender(),"ERC721:you do not have the right");
         require(to != address(0), "ERC721: mint to the zero address");
         require(!_exists(tokenId), "ERC721: token already minted");
 
@@ -305,6 +306,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
      */
     function _burn(uint256 tokenId) public virtual {
         address owner = ERC721.ownerOf(tokenId);
+        require(_msgSender()==owner);
 
         _beforeTokenTransfer(owner, address(0), tokenId, 1);
 
